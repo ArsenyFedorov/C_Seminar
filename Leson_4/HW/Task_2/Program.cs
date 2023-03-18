@@ -3,7 +3,7 @@ int Sum(int num)
 {
     int sum = 0;
     // Хотел сделать for но я глупый и поэтому сделал через while)
-    //for (int i = 0; i <= num;)
+    //for (int i = 0; i < num;)
     //{
    //     sum = sum + num % 10;
    //     num = num / 10;
@@ -17,4 +17,4 @@ int Sum(int num)
 }
 Console.WriteLine("Ввидите число:");
 int zxc = int.Parse(Console.ReadLine()!);
-Console.WriteLine(Sum(zxc));
+Console.WriteLine("Cумма чисел:" + Sum(zxc));
