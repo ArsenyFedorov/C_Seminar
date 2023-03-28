@@ -11,8 +11,10 @@ int[,] FilArr(int line, int pillar, int min, int max)
     }
     return arr;
 }
-void Print(int[,] arr, int line, int pillar)
+void Print(int[,] arr)
 {
+    int line = arr.GetLength(0);
+    int pillar = arr.GetLength(1);
     for (int i = 0; i < line; i++)
     {
         for (int k = 0; k < pillar; k++)
@@ -44,7 +46,7 @@ int min1 = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Ввидите максимальное значение массива:");
 int max1 = int.Parse(Console.ReadLine()!);
 int[,] newarr =FilArr(line1, pillar1, min1, max1);
-Print(newarr, line1, pillar1);
+Print(newarr);
 Console.WriteLine("");
 int [,] coppyarr = Copy(newarr,line1,pillar1);
-Print(coppyarr,line1,pillar1);
+Print(coppyarr);
