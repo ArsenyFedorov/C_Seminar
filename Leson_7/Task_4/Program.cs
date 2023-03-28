@@ -1,4 +1,4 @@
-﻿//Напишите программу, которая будет создавать копию заданного двумерного массива с помощью поэлементного копирования.
+﻿// 3. Задайте двумерный массив. Найдите сумму элементов главной диагонали.
 int[,] FilArr(int line, int pillar, int min, int max)
 {
     int[,] arr = new int[line, pillar];
@@ -25,18 +25,21 @@ void Print(int[,] arr)
         Console.WriteLine();
     }
 }
-int[,] Copy(int[,] arr, int line, int pillar)
+int Sum(int[,] arr)
 {
-    int[,] copyarr = new int[line, pillar];
+    int line = arr.GetLength(0);
+    int pillar = arr.GetLength(1);
+    int sum = 0;
     for (int i = 0; i < line; i++)
     {
-        for (int k = 0; k < pillar; k++)
+        for (int j = 0; j < pillar; j++)
         {
-            copyarr[i, k] = arr[i, k];
+            if (i == j) sum += arr[i, j];
         }
     }
-    return copyarr;
+    return sum;
 }
+
 Console.WriteLine("Ввидите количество строк:");
 int line1 = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Ввидите количество столбцов:");
@@ -45,8 +48,7 @@ Console.WriteLine("Ввидите минимальное значениея ма
 int min1 = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Ввидите максимальное значение массива:");
 int max1 = int.Parse(Console.ReadLine()!);
-int[,] newarr =FilArr(line1, pillar1, min1, max1);
+int[,] newarr = FilArr(line1, pillar1, min1, max1);
 Print(newarr);
-Console.WriteLine("");
-int [,] coppyarr = Copy(newarr,line1,pillar1);
-Print(coppyarr);
+Console.WriteLine("Сумма элементов главной диагонали:" + Sum(newarr));
+
