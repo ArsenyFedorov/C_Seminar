@@ -1,4 +1,5 @@
-﻿int[,] FilArr(int line, int pillar, int min, int max)
+﻿// Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце
+int[,] FilArr(int line, int pillar, int min, int max)
 {
     int[,] arr = new int[line, pillar];
     for (int i = 0; i < line; i++)
@@ -24,17 +25,23 @@ void Print(int[,] arr)
         Console.WriteLine();
     }
 }
-void Arr(int[,] arr, int userline, int userpillar)
+void Average(int[,] arr)
 {
-    if(arr.GetLength(0) >= userline - 1 && arr.GetLength(1) >= userpillar - 1) Console.WriteLine($"Значение искомого элемента:{UserNum(arr,userline,userpillar)}");
-    else Console.WriteLine("В данном массиве нет элемента с таким значением ");
+    double average = 0;
+    double count = 0;
+    int line = arr.GetLength(0);
+    int pillar = arr.GetLength(1);
+    for (int i = 0; i < pillar; i++)
+    {
+        count = 0;
+        for (int j = 0; j < line; j++)
+        {
+        count+=arr[j,i];
+        }
+        Math.Round( average = count/line,1);
+        Console.WriteLine($"Среднее арифмитическое {i+1}-ого стоблика:{average}");
+    }
 }
-
-int UserNum(int[,] arr, int userline, int userpillar)
-{
-    return arr[userline - 1, userpillar - 1];
-}
-
 Console.WriteLine("Ввидите количество строк:");
 int line1 = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Ввидите количество столбцов:");
@@ -45,9 +52,4 @@ Console.WriteLine("Ввидите максимальное значение ма
 int max1 = int.Parse(Console.ReadLine()!);
 int[,] newarr = FilArr(line1, pillar1, min1, max1);
 Print(newarr);
-Console.WriteLine("Ввидите искомую строку:");
-int userline = int.Parse(Console.ReadLine()!);
-Console.WriteLine("Ввидите искомый столбец:");
-int userpillar = int.Parse(Console.ReadLine()!);
-Arr(newarr, userline, userpillar);
-
+Average(newarr);
